@@ -1,0 +1,74 @@
+[debug] [2022-11-13T10:09:05.440Z] ----------------------------------------------------------------------
+[debug] [2022-11-13T10:09:05.442Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-11-13T10:09:05.442Z] CLI Version:   11.16.0
+[debug] [2022-11-13T10:09:05.442Z] Platform:      darwin
+[debug] [2022-11-13T10:09:05.442Z] Node Version:  v16.10.0
+[debug] [2022-11-13T10:09:05.443Z] Time:          Sun Nov 13 2022 04:09:05 GMT-0600 (Central Standard Time)
+[debug] [2022-11-13T10:09:05.444Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-13T10:09:05.509Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-13T10:09:05.510Z] > authorizing via signed-in user (shauryadwivedi0108@gmail.com)
+[debug] [2022-11-13T10:09:05.510Z] [iam] checking project intereview for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2022-11-13T10:09:05.512Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions [none]
+[debug] [2022-11-13T10:09:05.512Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions x-goog-quota-user=projects/intereview
+[debug] [2022-11-13T10:09:05.512Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2022-11-13T10:09:05.758Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions 200
+[debug] [2022-11-13T10:09:05.758Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions {}
+[debug] [2022-11-13T10:09:05.759Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project intereview:
+
+  datastore.indexes.create
+  datastore.indexes.delete
+  datastore.indexes.list
+  datastore.indexes.update
+  firebase.projects.get
+  firebasehosting.sites.update
+  firebaserules.releases.create
+  firebaserules.releases.update
+  firebaserules.rulesets.create
+[debug] [2022-11-13T10:09:05.760Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/intereview [none]
+[debug] [2022-11-13T10:09:06.076Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/intereview 403
+[debug] [2022-11-13T10:09:06.077Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/intereview {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-11-13T10:09:06.078Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-11-13T10:09:06.122Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project intereview. Please make sure the project exists and your account has permission to access it.
+[debug] [2022-11-13T10:11:20.086Z] ----------------------------------------------------------------------
+[debug] [2022-11-13T10:11:20.088Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-11-13T10:11:20.089Z] CLI Version:   11.16.0
+[debug] [2022-11-13T10:11:20.089Z] Platform:      darwin
+[debug] [2022-11-13T10:11:20.089Z] Node Version:  v16.10.0
+[debug] [2022-11-13T10:11:20.091Z] Time:          Sun Nov 13 2022 04:11:20 GMT-0600 (Central Standard Time)
+[debug] [2022-11-13T10:11:20.091Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-13T10:11:20.156Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-13T10:11:20.157Z] > authorizing via signed-in user (shauryadwivedi0108@gmail.com)
+[debug] [2022-11-13T10:11:20.157Z] [iam] checking project intereview for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2022-11-13T10:11:20.161Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions [none]
+[debug] [2022-11-13T10:11:20.161Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions x-goog-quota-user=projects/intereview
+[debug] [2022-11-13T10:11:20.161Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2022-11-13T10:11:20.452Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions 200
+[debug] [2022-11-13T10:11:20.452Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/intereview:testIamPermissions {}
+[debug] [2022-11-13T10:11:20.453Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project intereview:
+
+  datastore.indexes.create
+  datastore.indexes.delete
+  datastore.indexes.list
+  datastore.indexes.update
+  firebase.projects.get
+  firebasehosting.sites.update
+  firebaserules.releases.create
+  firebaserules.releases.update
+  firebaserules.rulesets.create
+[debug] [2022-11-13T10:11:20.455Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/intereview [none]
+[debug] [2022-11-13T10:11:20.766Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/intereview 403
+[debug] [2022-11-13T10:11:20.766Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/intereview {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-11-13T10:11:20.768Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-11-13T10:11:20.812Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project intereview. Please make sure the project exists and your account has permission to access it.

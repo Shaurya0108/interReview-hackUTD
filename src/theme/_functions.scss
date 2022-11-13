@@ -1,0 +1,11 @@
+@use 'sass:math';
+
+/**
+ * ----------------------------------------
+ * Functions
+ * ----------------------------------------
+ */
+
+@function rem($px, $root-size: 16) {
+  @return math.div($px, $root-size) * 1rem;
+}

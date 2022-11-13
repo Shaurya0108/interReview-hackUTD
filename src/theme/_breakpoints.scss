@@ -1,0 +1,112 @@
+/**
+ * ----------------------------------------
+ * Variables
+ * ----------------------------------------
+ */
+
+$phone-min: 0;
+$phone-max: 575;
+
+$tablet-min: 576;
+$tablet-max: 767;
+
+$laptop-min: 768;
+$laptop-max: 1339;
+
+$desktop-min: 1340;
+
+/**
+ * ----------------------------------------
+ * Mixins
+ * ----------------------------------------
+ */
+
+// ~ 575px
+@mixin phone {
+  @media (max-width: #{$phone-max + 'px'}) {
+    @content;
+  }
+}
+
+// ~ 767px
+@mixin tablet-or-less {
+  @media (max-width: #{$tablet-max + 'px'}) {
+    @content;
+  }
+}
+
+// 576px ~ 767px
+@mixin tablet-only {
+  @media (min-width: #{$tablet-min + 'px'}) and (max-width: #{$tablet-max + 'px'}) {
+    @content;
+  }
+}
+
+// 576px ~
+@mixin tablet-or-more {
+  @media (min-width: #{$tablet-min + 'px'}) {
+    @content;
+  }
+}
+
+// ~ 1339px
+@mixin laptop-or-less {
+  @media (max-width: #{$laptop-max + 'px'}) {
+    @content;
+  }
+}
+
+// 768px ~ 1339px
+@mixin laptop-only {
+  @media (min-width: #{$laptop-min + 'px'}) and (max-width: #{$laptop-max + 'px'}) {
+    @content;
+  }
+}
+
+// 768px ~
+@mixin laptop-or-more {
+  @media (min-width: #{$laptop-min + 'px'}) {
+    @content;
+  }
+}
+
+// 1440px ~
+@mixin desktop-or-more {
+  @media (min-width: '1440px') {
+    @content;
+  }
+}
+
+@mixin breakpoint-up($size) {
+  @media (min-width: $size + 'px') {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: $size + 'px') {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($min, $max) {
+  @media (min-width: $min + 'px') and (max-width: $max + 'px') {
+    @content;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * Exports
+ * ----------------------------------------
+ */
+
+:export {
+  phone-min: $phone-min;
+  phone-max: $phone-max;
+  tablet-min: $tablet-min;
+  tablet-max: $tablet-max;
+  laptop-min: $laptop-min;
+  laptop-max: $laptop-max;
+  desktop-min: $desktop-min;
+}

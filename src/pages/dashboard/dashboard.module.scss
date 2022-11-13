@@ -1,0 +1,67 @@
+@import '../../theme/core.scss';
+
+body{
+	background-color:rgba(238,238,238,255);
+}
+
+
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: rem(50);
+}
+
+.greeting {
+  color: black;
+  font-size: rem(16);
+  position: absolute;
+  top: rem(32);
+  right: rem(32);
+}
+
+.title {
+  color: white;
+  margin-top: rem(40);
+  font-size: rem(62);
+  text-align: center;
+}
+
+.description {
+  color: $light-gray;
+  margin-top: rem(20);
+  font-size: rem(22);
+  text-align: center;
+}
+
+.logo {
+  width: rem(260);
+  height: rem(260);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  max-width: rem(680);
+  margin-top: rem(100);
+  @include phone {
+    width: 100%;
+    max-width: 100%;
+    margin: rem(120) rem(16);
+  }
+}
+
+.download {
+  width: 45%;
+  height: rem(200);
+}
+
+.logout {
+  width: 45%;
+  height: rem(200);
+}
