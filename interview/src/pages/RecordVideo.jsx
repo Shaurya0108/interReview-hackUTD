@@ -3,13 +3,30 @@ import { useRecordWebcam, WebcamStatus } from 'react-record-webcam'
 import { useState } from 'react';
 import "../components/Buttons"
 import RenderButtons from '../components/Buttons';
+import { getStorage, ref, uploadBytes } from "firebase/storage"
+import { addDoc, collection, doc, Firestore, getDoc, getFirestore, setDoc } from "firebase/firestore"
 
-function RecordVideo(props) {
+function RecordVideo({ app }) {
     const recordWebcam = useRecordWebcam({ frameRate: 60 });
-
+    const db = getFirestore(app)
     const saveFile = async () => {
+        const storage = getStorage()
         const blob = await recordWebcam.getRecording();
+       
+        const docu = {
+            prompt: "Why do you want to work at apple",
+            link: `videos/link`,
+            reviews: [""],
+            user: "Bee"
+        }
+        console.log(db);
+        const docRef = await addDoc(collection(db, "videos"), docu);
+        const storageRef = ref(storage, `videos/${docRef.id}`)
+        uploadBytes(storageRef, blob).then((result) => console.log("Success"));
+        docu.link = `videos/${docRef.id}`
+        await setDoc(docRef, docu)
     };
+
     const [recording, setrecording] = useState(true)
     const [firstStart, setfirststart] = useState(true)
     function onRecord() {
