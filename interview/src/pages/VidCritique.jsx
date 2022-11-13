@@ -54,7 +54,7 @@ function VidCritique({ app }) {
 
     return (<div>
         <h1>Prompt: {vidList.length == 0 ? "Prompt" : vidList[index].prompt}</h1>
-        <h1>User is {vidList.length == 0 ? "Name" : vidList[index].user}</h1>
+        <h1>User: {vidList.length == 0 ? "Name" : vidList[index].user}</h1>
         <video controls src={vidList.length == 0 ? "" : vidList[index].link} onEnded={() => { setviewed(true) }} />
         {viewed && <CritiqueForm critiqueText={critique} updateCritiqueText={updateCritique} sendToDB={sendtodb} />}
 
