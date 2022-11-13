@@ -3,11 +3,12 @@ import { useRecordWebcam, WebcamStatus } from 'react-record-webcam'
 import { useState } from 'react';
 import "../components/Buttons"
 import RenderButtons from '../components/Buttons';
-import { getStorage, ref, uploadBytes } from "firebase/storage"
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage"
 import { addDoc, collection, doc, FieldValue, Firestore, getDoc, getDocs, getFirestore, query, setDoc, where } from "firebase/firestore"
 import { async } from '@firebase/util';
 
 function RecordVideo({ app }) {
+
     const recordWebcam = useRecordWebcam({ frameRate: 60 });
     const db = getFirestore(app)
     async function getuserdata(name) {
@@ -33,8 +34,8 @@ function RecordVideo({ app }) {
         console.log(db);
         const docRef = await addDoc(collection(db, "videos"), docu);
         const storageRef = ref(storage, `videos/${docRef.id}`)
-        uploadBytes(storageRef, blob).then((result) => console.log("Success"));
-        docu.link = `videos/${docRef.id}`
+        await uploadBytes(storageRef, blob).then((result) => console.log("Success"));
+        docu.link = await getDownloadURL(storageRef)
         await setDoc(docRef, docu)
 
         //create link between user and prompts
@@ -48,7 +49,7 @@ function RecordVideo({ app }) {
         const userobj = await getDoc(userref)
         const userdata = userobj.data()
 
-        userdata.videos.push(docu.link)
+        userdata.videos.push(`videos/${docRef.id}`)
         setDoc(userref, userdata)
 
     };

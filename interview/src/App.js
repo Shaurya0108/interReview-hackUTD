@@ -30,7 +30,8 @@ function App(props) {
 
   return (
     <div>
-      <ProfilePage />
+      <ProfilePage app={app} />
+      {/* <RecordVideo app={app} /> */}
     </div>
   )
 }
