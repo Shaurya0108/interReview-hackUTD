@@ -4,15 +4,26 @@ import { useState } from 'react';
 import "../components/Buttons"
 import RenderButtons from '../components/Buttons';
 import { getStorage, ref, uploadBytes } from "firebase/storage"
-import { addDoc, collection, doc, Firestore, getDoc, getFirestore, setDoc } from "firebase/firestore"
+import { addDoc, collection, doc, FieldValue, Firestore, getDoc, getDocs, getFirestore, query, setDoc, where } from "firebase/firestore"
+import { async } from '@firebase/util';
 
 function RecordVideo({ app }) {
     const recordWebcam = useRecordWebcam({ frameRate: 60 });
     const db = getFirestore(app)
+    async function getuserdata(name) {
+        const q = query(collection(db, "users"), where("username", "==", `${name}`))
+        const qsnapshot = await getDocs(q)
+
+
+        const userref = doc(db, `users/${qsnapshot.docs[0].id}`)
+        const userobj = await getDoc(userref)
+        const userdata = userobj.data()
+        return userdata
+    }
     const saveFile = async () => {
         const storage = getStorage()
         const blob = await recordWebcam.getRecording();
-       
+
         const docu = {
             prompt: "Why do you want to work at apple",
             link: `videos/link`,
@@ -25,6 +36,21 @@ function RecordVideo({ app }) {
         uploadBytes(storageRef, blob).then((result) => console.log("Success"));
         docu.link = `videos/${docRef.id}`
         await setDoc(docRef, docu)
+
+        //create link between user and prompts
+
+
+        const q = query(collection(db, "users"), where("username", "==", `Bee`))
+        const qsnapshot = await getDocs(q)
+
+
+        const userref = doc(db, `users/${qsnapshot.docs[0].id}`)
+        const userobj = await getDoc(userref)
+        const userdata = userobj.data()
+
+        userdata.videos.push(docu.link)
+        setDoc(userref, userdata)
+
     };
 
     const [recording, setrecording] = useState(true)

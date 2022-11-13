@@ -8,6 +8,7 @@ import VidCritique from './pages/VidCritique';
 import { initializeApp } from "firebase/app";
 // import * as dotenv from 'dotenv'
 import API_KEY from './env';
+import ProfilePage from './pages/ProfilePage';
 
 function App(props) {
 
@@ -29,7 +30,7 @@ function App(props) {
 
   return (
     <div>
-      <RecordVideo app={app} />
+      <ProfilePage />
     </div>
   )
 }
