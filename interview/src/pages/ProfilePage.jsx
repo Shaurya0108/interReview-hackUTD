@@ -6,6 +6,7 @@ import { getDownloadURL, ref, getStorage } from "firebase/storage"
 import { addDoc, collection, doc, FieldValue, Firestore, getDoc, getDocs, getFirestore, setDoc, where } from "firebase/firestore"
 import { useRef } from "react"
 import { useEffect } from "react"
+import Vidview from "../components/Vidview"
 function ProfilePage({ app }) {
     const [userdata, setuserdata] = useState()
     const [urls, seturls] = useState()
@@ -55,13 +56,11 @@ function ProfilePage({ app }) {
                 // console.log(urls);
             })
         })
-    } 
+    }
 
 
     return (<div>
-        {userdata != undefined && urls != undefined && urls.map(vid => <div key={vid.link} >
-            <h1>{vid.prompt}</h1>
-            <video src={vid.link} controls></video></div>)}
+        {userdata != undefined && urls != undefined && urls.map(vid => <Vidview key={vid.link} vid={vid} />)}
     </div>)
 }
 

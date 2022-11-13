@@ -10,6 +10,8 @@ import { async } from '@firebase/util';
 function RecordVideo({ app }) {
 
     const recordWebcam = useRecordWebcam({ frameRate: 60 });
+    const [prompt, setprompt] = useState("")
+    const [promptSubmitted, setSubmitted] = useState(false)
     const db = getFirestore(app)
     async function getuserdata(name) {
         const q = query(collection(db, "users"), where("username", "==", `${name}`))
@@ -26,9 +28,9 @@ function RecordVideo({ app }) {
         const blob = await recordWebcam.getRecording();
 
         const docu = {
-            prompt: "Why do you want to work at apple",
+            prompt: prompt,
             link: `videos/link`,
-            reviews: [""],
+            reviews: [],
             user: "Bee"
         }
         console.log(db);
@@ -72,6 +74,9 @@ function RecordVideo({ app }) {
         recordWebcam.retake()
     }
     //recordWebcam.open()
+    function onClick() {
+        setSubmitted(true)
+    }
     return (
         <div>
             <p>Camera status: {recordWebcam.status}</p>
@@ -83,14 +88,37 @@ function RecordVideo({ app }) {
       <button onClick={recordWebcam.download}>Download recording</button>
       <button onClick={saveFile}>Save file to server</button> */}
             <RenderButtons recordWebcam={recordWebcam} setrecording={setrecording} saveFile={saveFile} />
-            <h3> Why do you want to work at apple? </h3>
+            {/* <h3> Why do you want to work at apple? </h3> */}
+            {promptSubmitted ? <Showprompt prompt={prompt} onClick={() => setSubmitted(false)} /> : <PromptForm onChange={event => {
+                setprompt(event.target.value)
+            }} onClick={() => {
+                setSubmitted(true)
+            }}
+            />}
 
             {recording && <video ref={recordWebcam.webcamRef} autoPlay />}
             {!recording && <video ref={recordWebcam.previewRef} autoPlay loop controls />}
 
         </div>
     )
+
 }
 
+function Showprompt({ prompt, onClick }) {
+    return <div>
+        <h3>{prompt}</h3>
+        <button type="submit" onClick={onClick} onSubmit={oncanplay}>Reset prompt</button>
+    </div>
+
+}
+
+function PromptForm({ onChange, onClick }) {
+    return <>
+        <form>
+            <input type="text" onChange={onChange} />
+        </form>
+        <button type="submit" onClick={onClick} onSubmit={onClick}>Submit</button>
+    </>
+}
 
 export default RecordVideo
