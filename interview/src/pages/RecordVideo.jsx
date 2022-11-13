@@ -28,7 +28,7 @@ function RecordVideo({ app }) {
         const docu = {
             prompt: "Why do you want to work at apple",
             link: `videos/link`,
-            reviews: [""],
+            reviews: [],
             user: "Bee"
         }
         console.log(db);

@@ -30,6 +30,7 @@ function App(props) {
 
   return (
     <div>
+      {/* <VidCritique app={app} /> */}
       <ProfilePage app={app} />
       {/* <RecordVideo app={app} /> */}
     </div>
