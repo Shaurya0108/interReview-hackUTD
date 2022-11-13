@@ -43,8 +43,8 @@ function RecordVideo(props) {
       <RenderButtons recordWebcam={recordWebcam} setrecording={setrecording} saveFile={saveFile} />
       <h3> Why do you want to work at apple? </h3>
 
-      {recording && <video ref={recordWebcam.webcamRef} autoPlay muted />}
-      {!recording && <video ref={recordWebcam.previewRef} autoPlay muted loop />}
+      {recording && <video ref={recordWebcam.webcamRef} autoPlay />}
+      {!recording && <video ref={recordWebcam.previewRef} autoPlay loop controls />}
 
     </div>
   )
